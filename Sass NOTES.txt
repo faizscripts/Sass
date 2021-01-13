@@ -1,0 +1,82 @@
+.sass       -indentation
+.scss       -similar to normal css commonly used
+
+
+make sure you have node installed
+
+~ npm install -g sass
+run the above code in the terminal
+
+create a main.scss file
+
+in your index.html file, link it to a not yet created .css file
+
+~ sass scss/main.css:css/main.css --watch
+sass directory of scss file: directory where you want to save your css file
+
+install file watcher plugin
+
+go to settings tools and enable file watcher
+
+
+
+
+$primary-color:#384a28;
+
+you can then call the variable inside your code
+
+
+
+
+
+/// MAPS    ///
+
+maps are a list of key- value pairs
+
+$font-weights: (
+  'regular': 400,
+  'medium': 500,
+  'bold': 700
+)
+
+font-weight: map-get($font-weights, regular);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

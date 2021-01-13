@@ -1,0 +1,14 @@
+$primary-color: #49f45f;
+$font-weights: (
+  'regular': 400,
+  'medium': 500,
+  'bold': 700
+);
+
+
+
+body {
+  background: purple;
+  color: $primary-color;
+  font-weight: map-get($font-weights, regular);
+}
