@@ -44,6 +44,69 @@ font-weight: map-get($font-weights, regular);
 
 
 
+///     NESTING     ///
+
+
+assuming you have a div with class main and it contains a paragraph
+
+
+normally, in order to style the paragraph, we would use
+.main p {}
+or
+p {} to globally style all the paragraphs
+
+
+in sass we can nest and the styling will only be applied in this particular paragraph only
+.main {
+    p{
+
+    }
+}
+
+
+in the case where the parent div and the child p share a common class name say the div has a class of main and the child main-paragraph, we can shorten our sass in the following way
+
+.main {
+    #{&}-paragraph{
+        $:hover{
+            color: red;
+        }
+    }
+}
+
+
+the #{$} basically reads as parent name
+
+
+
+
+///     SEPARATING FILES            ///
+
+we can create partial sass files that contain little snippets of css that you could include in other sass files
+
+
+a partial is a sass file named with a leading underscore (_)
+
+
+the compiler is going to ignore the files that begin with an _ an it won't generate a css file for it
+
+
+in the scss folder, create _resets.scss where we will include our normal resets
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+we will then include our resets in our main.scss file
+~ import '/resets';
+
+
+these changes will be included in our css file
+
+
+create _variables.scss
 
 
 
@@ -52,6 +115,92 @@ font-weight: map-get($font-weights, regular);
 
 
 
+
+
+
+
+///         FUNCTIONS           ///
+
+we'll create a function that simplifies our map-get function for our font-weight variable that we had created
+
+
+@function weight($weight-name){
+    @return map-get($font-weights, $weight-name);
+}
+
+
+we will call the function the following way
+
+font-weight: weight(bold);
+
+
+
+
+
+
+
+
+///         MIXINS          ///
+
+mixins are similar to functions
+
+
+a mixin that aligns items to the center
+
+@mixin flexCenter($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+
+
+.main {
+    @include flexCenter(column);
+}
+
+
+
+the difference between functions and mixins is that
+functions are used to compute values
+mixins are used to create styles e.g choosing between a light and dark theme
+
+
+@mixin theme($light-theme: true){
+    @if $light-theme{
+        background: lighten($primary-color, 100%);
+        color: darken($text-color, 100%);
+    }
+}
+
+
+
+
+we're then going to create a light class
+
+.light{
+    @include theme($light-theme: true);
+}
+
+
+
+you can also use mixins to create media queries
+
+
+
+
+
+///         EXTENSIONS          ///
+
+
+we can extend an element and the element that we extend to will inherit all the styles
+
+
+
+.paragraph2 {
+    @extend .paragraph1;
+}
 
 
 

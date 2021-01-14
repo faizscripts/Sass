@@ -1,6 +1,12 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  background: purple;
-  color: #49f45f;
+  background: #6191c1;
+  color: #816b98;
   font-weight: 400;
 }
 
